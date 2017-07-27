@@ -25,7 +25,6 @@ import subprocess
 import sys
 
 def receive_signal(signum, stack):
-    global EXIT
     if signum in [1,2,3,15,17]:
         print 'Caught signal %s' %(str(signum))
     else:
