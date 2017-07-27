@@ -47,6 +47,7 @@ if __name__ == '__main__':
                 requests.get(CONFIG["endpoint"])
             if 'commands' in CONFIG:
                 for command in CONFIG["commands"]:
+                    print('Running command: %s', command)
                     process = subprocess.Popen(command)
                     while process.poll() is None:
                         time.sleep(30)
