@@ -25,9 +25,9 @@ import subprocess
 import sys
 
 def receive_signal(signum, stack):
+    global EXIT
     if signum in [1,2,3,15,17]:
-        print 'Caught signal %s, exiting.' %(str(signum))
-        sys.exit()
+        print 'Caught signal %s' %(str(signum))
     else:
         print 'Caught signal %s, ignoring.' %(str(signum))
 
@@ -55,5 +55,5 @@ if __name__ == '__main__':
                         queue.record_lifecycle_action_heartbeat(message)
             """Send a complete lifecycle action"""
             queue.complete_lifecycle_action(message)
-            break
+            sys.exit(0)
         time.sleep(5)
